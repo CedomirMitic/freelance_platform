@@ -3,15 +3,16 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
+use App\Models\Company;
+use App\Models\Profile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -19,8 +20,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
         'email',
+        'role',
+        'phone',
         'password',
     ];
 
@@ -46,4 +48,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+/**
+ * Connection to regular profile (Freelancer)
+ */
+public function profile()
+{
+    return $this->hasOne(Profile::class, 'user_id');
+}
+
+/**
+ * Connection to company profile (Recruiter)
+ */
+public function company()
+{
+    return $this->hasOne(Company::class, 'user_id');
+}
+
+public function isAdmin() {
+    return $this->role === 'admin';
+}
 }

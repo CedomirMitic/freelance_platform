@@ -1,0 +1,1 @@
+export const API_URL = 'https://freelanceplatform-production98.up.railway.app/api/';
