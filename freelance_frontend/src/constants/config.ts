@@ -1,1 +1,1 @@
-export const API_URL = 'https://freelanceplatform-production98.up.railway.app/api/';
+export const API_URL = 	process.env.NEXT_PUBLIC_API_URL
