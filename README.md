@@ -1,4 +1,4 @@
-# Freelance Application Platform
+#  Freelance Application Platform
 * **Live Demo:** [Freelance Platform](https://freelance-platform-sigma.vercel.app/)
 
 A modern, full-stack web application designed to bridge the gap between freelancers and recruiters. This platform focuses on **scalability, high-security standards, and an intuitive user experience.**
